@@ -19,24 +19,32 @@ public class DesignController {
     private DesignRepository designRepository;
 
     @Autowired
-    private DesignService  designService;
+    private DesignService designService;
 
+    /**
+     * the method gets all the designs for specific criteria
+     * l
+     *
+     * @param designNum design number for a design
+     * @param author    author of a design
+     * @return List of designs
+     */
     @RequestMapping(value = "/{designNum}/{author}", method = RequestMethod.GET, produces = "application/json")
     public List<Design> getDesignByDesignNumAndAuthor(@PathVariable("designNum") String designNum, @PathVariable("author") String author) {
         return designRepository.findByDesignNumAndAuthor(designNum, author);
     }
 
-    @RequestMapping(value = "/all" ,method = RequestMethod.GET, produces = "application/json")
-    public List<Design> getAllDesigns(){
+    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
+    public List<Design> getAllDesigns() {
         return designRepository.findAll();
     }
 
-    @RequestMapping(value = "/save" ,method = RequestMethod.POST, produces = "application/json")
-    public List<Design> saveDesigns(@RequestBody List<Design> designs){
+    @RequestMapping(value = "/save", method = RequestMethod.POST, produces = "application/json")
+    public List<Design> saveDesigns(@RequestBody List<Design> designs) {
         for (Design design : designs) {
             designService.updateOrSaveDesign(design);
         }
-       return  designs;
+        return designs;
     }
 
 }
