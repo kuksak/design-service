@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by Sakshi Kukreti on 26-04-2017. some random change
+ * Created by Sakshi Kukreti on 26-04-2017.
  */
 @RestController
 @RequestMapping(value = "service")
