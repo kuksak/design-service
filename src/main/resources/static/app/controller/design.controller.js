@@ -4,38 +4,22 @@
 
 angular.module('app')
     .controller('designController', function ($scope, designService) {
-        $scope.design = {};
-        $scope.design.designNum='';
-        $scope.design.author='default';
-
-
-
-        $scope.saveChanges=function () {
+        $scope.saveChanges = function () {
             designService
                 .saveChanges($scope.designs)
                 .then(function (response) {
-                    console.log('updating design',response);
+                    console.log('updating design', response);
                     initController();
                 });
         };
-        $scope.saveNewDesign=function () {
-            var array = [];
-            array.push($scope.design);
-            designService
-                .saveChanges(array)
-                .then(function (response) {
-                    console.log('saving new design',response);
-                    initController();
-                });
-        };
+
         function initController() {
             designService.fetchAllDesigns()
                 .then(function (response) {
                     console.log(response);
-                    $scope.designs=response.data;
+                    $scope.designs = response.data;
                 });
         }
+
         initController();
-
-
     });

@@ -8,7 +8,7 @@ import javax.persistence.Id;
  * Created by Sakshi Kukreti on 26-04-2017.
  */
 @Entity
-public class Design {
+public class Design implements Comparable {
     @Id
     @GeneratedValue
     private Long designId;
@@ -47,6 +47,20 @@ public class Design {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Design) {
+            Design that = (Design) o;
+            if (this.designId.equals(that.designId) && this.designNum.equals(that.designNum) && this.author.equals(that.author)) {
+                return 0;
+            } else {
+                return 1;
+            }
+        } else {
+            return -1;
+        }
     }
 }
 

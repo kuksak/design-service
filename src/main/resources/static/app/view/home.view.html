@@ -1,0 +1,18 @@
+<div class="container container-fluid">
+    <div class="panel panel-primary" ng-repeat="design in designs"
+         style="width: 48%; display: inline-block; margin-right: 15px;">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{design.designNum}}</h3>
+        </div>
+        <div class="panel-body">
+            <p class="text-danger">{{design.author}}</p>
+            <br>
+            <input class="form-control" ng-model="design.author">
+        </div>
+
+    </div>
+    <div>
+        <button class="btn btn-success" ng-click="saveChanges()">Save Changes</button>
+
+    </div>
+</div>
